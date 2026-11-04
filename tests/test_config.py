@@ -34,3 +34,19 @@ def test_config_never_persists_secret_values(tmp_path: Path):
     text = store.path.read_text()
     assert "forge/test/token" in text
     assert "actual-secret-value" not in text
+
+
+def test_remote_url_cannot_embed_credentials():
+    with pytest.raises(ValueError, match="embedded credentials"):
+        MCPConnection.from_dict(
+            "unsafe",
+            {"transport": "http", "url": "https://user:password@example.com/mcp"},
+        )
+
+
+def test_enabled_must_be_a_boolean():
+    with pytest.raises(ValueError, match="enabled must be a boolean"):
+        MCPConnection.from_dict(
+            "unsafe",
+            {"transport": "stdio", "command": "npx", "enabled": "false"},
+        )
