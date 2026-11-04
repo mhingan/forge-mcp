@@ -79,6 +79,7 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="HEADER=KEYRING_REF",
         help="Map an HTTP header to a keyring reference; repeat for multiple headers",
     )
+    add.add_argument("--allow-tool", action="append", default=[], help="Expose only this tool; repeat to allow multiple")
     add.add_argument("--enable", action="store_true", help="Enable immediately after explicit review")
 
     stdio = sub.add_parser("add-stdio", help="Add a local STDIO MCP server, disabled by default")
@@ -171,6 +172,7 @@ def main(argv: list[str] | None = None) -> int:
                 auth_mode=args.auth_mode,
                 oauth_scope=args.scope,
                 header_refs=header_refs,
+                allowed_tools=tuple(args.allow_tool),
             )
             store.add(connection)
             print(f"Added {args.name} (enabled={args.enable}).")
