@@ -72,6 +72,13 @@ def build_parser() -> argparse.ArgumentParser:
     add.add_argument("--auth-mode", choices=["none", "bearer", "oauth"], default="none")
     add.add_argument("--scope", help="OAuth scopes, space separated")
     add.add_argument("--credential-ref", help="Keyring reference for a bearer token")
+    add.add_argument(
+        "--header-ref",
+        action="append",
+        default=[],
+        metavar="HEADER=KEYRING_REF",
+        help="Map an HTTP header to a keyring reference; repeat for multiple headers",
+    )
     add.add_argument("--enable", action="store_true", help="Enable immediately after explicit review")
 
     stdio = sub.add_parser("add-stdio", help="Add a local STDIO MCP server, disabled by default")
@@ -145,11 +152,17 @@ def main(argv: list[str] | None = None) -> int:
                     target = item.url if item.transport == "http" else item.command
                     print(f"{name:<24} {item.transport:<6} {state:<9} {target}")
         elif args.command == "add-http":
-            if args.auth_mode == "bearer" and not args.credential_ref:
-                raise ValueError("--credential-ref is required with --auth-mode bearer.")
-            if args.auth_mode != "bearer" and args.credential_ref:
-                raise ValueError("--credential-ref is only valid with --auth-mode bearer.")
-            header_refs = {"Authorization": args.credential_ref} if args.credential_ref else {}
+            header_refs = _parse_refs(args.header_ref)
+            if args.credential_ref:
+                if "Authorization" in header_refs:
+                    raise ValueError("Do not provide Authorization twice.")
+                header_refs["Authorization"] = args.credential_ref
+            if args.auth_mode == "bearer" and "Authorization" not in header_refs:
+                raise ValueError(
+                    "Bearer auth requires --credential-ref or --header-ref Authorization=REFERENCE."
+                )
+            if args.auth_mode == "oauth" and header_refs:
+                raise ValueError("OAuth cannot be combined with static HTTP header references.")
             connection = MCPConnection(
                 name=args.name,
                 transport="http",
