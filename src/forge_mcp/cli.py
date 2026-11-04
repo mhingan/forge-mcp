@@ -9,6 +9,7 @@ import sys
 import httpx
 
 from forge_mcp.config import ConnectionStore, MCPConnection
+from forge_mcp.popular import popular_servers, popularity_metadata
 from forge_mcp.registry import MCPRegistry
 
 
@@ -35,6 +36,8 @@ def build_parser() -> argparse.ArgumentParser:
     search.add_argument("--limit", type=int, default=25)
     browse = sub.add_parser("browse", help="Browse the official MCP Registry")
     browse.add_argument("--limit", type=int, default=100)
+    popular = sub.add_parser("popular", help="List popular MCP servers by GitHub stars")
+    popular.add_argument("--limit", type=int, default=100)
     local = sub.add_parser("list", help="List local MCP connections")
     local.add_argument("--json", action="store_true")
     add = sub.add_parser("add-http", help="Add a remote HTTPS MCP server (disabled by default)")
@@ -63,6 +66,17 @@ def main(argv: list[str] | None = None) -> int:
             _print_records(MCPRegistry().search(args.query, args.limit))
         elif args.command == "browse":
             _print_records(MCPRegistry().browse(args.limit))
+        elif args.command == "popular":
+            metadata = popularity_metadata()
+            print(f"{metadata['title']} — snapshot {metadata['snapshot_date']}")
+            print(f"Ranking: {metadata['ranking_method']}")
+            print(f"Source: {metadata['source']}")
+            print(metadata["caveat"])
+            for item in popular_servers(args.limit):
+                print(
+                    f"{item['rank']:>3}. {item['name']} ({item['publisher']}) "
+                    f"— {item['github_stars']:,} stars"
+                )
         elif args.command == "list":
             connections = store.load()
             if args.json:
