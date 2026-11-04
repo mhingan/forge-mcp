@@ -26,7 +26,7 @@ class ServerRecord:
     raw: dict[str, Any] | None = None
 
     @classmethod
-    def from_api(cls, item: dict[str, Any]) -> "ServerRecord":
+    def from_api(cls, item: dict[str, Any]) -> ServerRecord:
         server = item.get("server") if isinstance(item.get("server"), dict) else item
         repository = server.get("repository")
         if isinstance(repository, dict):
@@ -74,7 +74,7 @@ class MCPRegistry:
         response.raise_for_status()
         payload = response.json()
         if not isinstance(payload, dict):
-            raise ValueError("MCP Registry returned an unexpected response.")
+            raise TypeError("MCP Registry returned an unexpected response.")
         return payload
 
     def search(self, query: str, limit: int = 25) -> list[ServerRecord]:
@@ -120,7 +120,7 @@ class MCPRegistry:
     def _records(payload: dict[str, Any]) -> list[ServerRecord]:
         items = payload.get("servers", [])
         if not isinstance(items, list):
-            raise ValueError("MCP Registry response has no valid servers list.")
+            raise TypeError("MCP Registry response has no valid servers list.")
         records: list[ServerRecord] = []
         seen: set[str] = set()
         for item in items:
