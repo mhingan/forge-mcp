@@ -29,6 +29,8 @@ class MCPConnection:
     args: tuple[str, ...] = ()
     cwd: str | None = None
     url: str | None = None
+    auth_mode: str = "none"
+    oauth_scope: str | None = None
     env_refs: dict[str, str] | None = None
     header_refs: dict[str, str] | None = None
     allowed_tools: tuple[str, ...] = ()
@@ -47,6 +49,14 @@ class MCPConnection:
             parsed = urlsplit(url or "")
             if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
                 raise ValueError(f"{name}: remote MCP connections must use HTTPS without embedded credentials.")
+        auth_mode = value.get("auth_mode", "bearer" if value.get("header_refs") else "none")
+        if auth_mode not in {"none", "bearer", "oauth"}:
+            raise ValueError(f"{name}: auth_mode must be none, bearer, or oauth.")
+        oauth_scope = value.get("oauth_scope")
+        if oauth_scope is not None and not isinstance(oauth_scope, str):
+            raise TypeError(f"{name}: oauth_scope must be a string.")
+        if transport == "stdio" and (auth_mode != "none" or oauth_scope is not None):
+            raise ValueError(f"{name}: HTTP auth modes are only valid for remote servers.")
         enabled = value.get("enabled", False)
         if not isinstance(enabled, bool):
             raise TypeError(f"{name}: enabled must be a boolean.")
@@ -69,6 +79,10 @@ class MCPConnection:
             raise ValueError(f"{name}: env_refs cannot override protected process environment variables.")
         if any(not re.fullmatch(r"[A-Za-z0-9-]+", key) for key in header_refs):
             raise ValueError(f"{name}: header_refs contains an invalid HTTP header name.")
+        if auth_mode == "oauth" and header_refs:
+            raise ValueError(f"{name}: OAuth connections cannot also define static HTTP headers.")
+        if auth_mode == "bearer" and not header_refs:
+            raise ValueError(f"{name}: bearer auth requires at least one header credential reference.")
         if any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_./:-]{0,190}", ref) for ref in [*env_refs.values(), *header_refs.values()]):
             raise ValueError(f"{name}: a credential reference contains unsupported characters.")
         allowed_tools = value.get("allowed_tools", [])
@@ -82,6 +96,8 @@ class MCPConnection:
             args=tuple(args),
             cwd=value.get("cwd"),
             url=url,
+            auth_mode=auth_mode,
+            oauth_scope=oauth_scope,
             env_refs=env_refs,
             header_refs=header_refs,
             allowed_tools=tuple(allowed_tools),
@@ -97,7 +113,10 @@ class MCPConnection:
             "header_refs": self.header_refs or {},
             "allowed_tools": list(self.allowed_tools),
             "source": self.source,
+            "auth_mode": self.auth_mode,
         }
+        if self.oauth_scope is not None:
+            result["oauth_scope"] = self.oauth_scope
         for key in ("command", "cwd", "url"):
             value = getattr(self, key)
             if value is not None:
