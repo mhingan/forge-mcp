@@ -6,6 +6,8 @@ import argparse
 import json
 import sys
 
+import httpx
+
 from forge_mcp.config import ConnectionStore, MCPConnection
 from forge_mcp.registry import MCPRegistry
 
@@ -86,7 +88,7 @@ def main(argv: list[str] | None = None) -> int:
             store.set_enabled(args.name, args.command == "enable")
             print(f"{args.name}: {args.command}d.")
         return 0
-    except Exception as exc:
+    except (ValueError, OSError, TypeError, KeyError, json.JSONDecodeError, httpx.HTTPError) as exc:
         print(f"forge-mcp: {exc}", file=sys.stderr)
         return 1
 
