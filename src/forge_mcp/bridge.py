@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import logging
 import re
 from typing import Any
 
 from forge_mcp.client import MCPConnector
 from forge_mcp.config import ConnectionStore, MCPConnection
+
+logger = logging.getLogger(__name__)
 
 
 class MCPToolBridge:
@@ -31,7 +34,16 @@ class MCPToolBridge:
         for connection in self.store.load().values():
             if not connection.enabled:
                 continue
-            for remote_tool in await self.connector.list_tools(connection):
+            try:
+                remote_tools = await self.connector.list_tools(connection)
+            except Exception as exc:
+                logger.warning(
+                    "Skipping unavailable MCP connection %s during tool discovery (%s)",
+                    connection.name,
+                    type(exc).__name__,
+                )
+                continue
+            for remote_tool in remote_tools:
                 if connection.allowed_tools and remote_tool["name"] not in connection.allowed_tools:
                     continue
                 raw_name = f"mcp_{connection.name}_{remote_tool['name']}"
