@@ -49,7 +49,15 @@ class MCPConnection:
             parsed = urlsplit(url or "")
             if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
                 raise ValueError(f"{name}: remote MCP connections must use HTTPS without embedded credentials.")
-        auth_mode = value.get("auth_mode", "bearer" if value.get("header_refs") else "none")
+        default_auth_mode = (
+            "bearer"
+            if any(
+                str(header).lower() == "authorization"
+                for header in (value.get("header_refs") or {})
+            )
+            else "none"
+        )
+        auth_mode = value.get("auth_mode", default_auth_mode)
         if auth_mode not in {"none", "bearer", "oauth"}:
             raise ValueError(f"{name}: auth_mode must be none, bearer, or oauth.")
         if auth_mode == "none" and any(
