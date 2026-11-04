@@ -3,18 +3,33 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "forge-mcp"
-version = "0.1.0"
-description = "MCP server discovery, connection manifests, and integration registry for Forge Runtime"
+name = "forge-mcp-registry"
+version = "0.2.0"
+description = "MCP server discovery, secure credential storage, local gateway, and connector bridge for Forge Runtime"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Mihaita Hingan" }]
-keywords = ["mcp", "model-context-protocol", "ai-agents", "forge", "registry", "integrations"]
-dependencies = ["httpx>=0.27,<1"]
+keywords = ["mcp", "model-context-protocol", "ai-agents", "forge", "registry", "integrations", "oauth", "gateway"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "httpx>=0.27,<1",
+  "httpx2>=2.10.0",
+  "mcp>=2,<3",
+  "keyring>=25,<27",
+]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<9", "ruff>=0.5"]
+dev = ["pytest>=8,<9", "pytest-asyncio>=0.23,<2", "ruff>=0.5"]
 
 [project.urls]
 Homepage = "https://github.com/mhingan/forge-mcp"
@@ -29,4 +44,5 @@ packages = ["src/forge_mcp"]
 include = ["src/forge_mcp/data/*.json"]
 
 [tool.pytest.ini_options]
+asyncio_mode = "auto"
 testpaths = ["tests"]
