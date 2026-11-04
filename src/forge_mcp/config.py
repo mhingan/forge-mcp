@@ -24,7 +24,7 @@ PROTECTED_ENV = {
 class MCPConnection:
     name: str
     transport: str
-    enabled: bool
+    enabled: bool = False
     command: str | None = None
     args: tuple[str, ...] = ()
     cwd: str | None = None
