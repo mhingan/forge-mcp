@@ -13,6 +13,11 @@ from urllib.parse import urlsplit
 
 NAME_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$")
 CONFIG_VERSION = 1
+PROTECTED_ENV = {
+    "PATH", "HOME", "USERPROFILE", "APPDATA", "TMPDIR", "TEMP", "TMP",
+    "SYSTEMROOT", "WINDIR", "NODE_OPTIONS", "PYTHONPATH", "PYTHONHOME",
+    "LD_PRELOAD", "DYLD_INSERT_LIBRARIES",
+}
 
 
 @dataclass(frozen=True)
@@ -60,6 +65,8 @@ class MCPConnection:
             raise ValueError(f"{name}: header_refs must map header names to keyring references.")
         if any(not re.fullmatch(r"[A-Z_][A-Z0-9_]*", key) for key in env_refs):
             raise ValueError(f"{name}: env_refs contains an invalid environment variable name.")
+        if set(env_refs) & PROTECTED_ENV:
+            raise ValueError(f"{name}: env_refs cannot override protected process environment variables.")
         if any(not re.fullmatch(r"[A-Za-z0-9-]+", key) for key in header_refs):
             raise ValueError(f"{name}: header_refs contains an invalid HTTP header name.")
         if any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_./:-]{0,190}", ref) for ref in [*env_refs.values(), *header_refs.values()]):
