@@ -38,6 +38,12 @@ You can provide an OAuth scope when the service requires it:
     forge-mcp enable service
     forge-mcp tools service
 
+For providers that use custom API-key header names:
+
+    forge-mcp add-http service https://mcp.example.com/mcp --header-ref X-API-Key=forge/service/api-key
+    forge-mcp credential set forge/service/api-key
+    forge-mcp enable service
+
 The credential prompt does not echo the secret. The value is saved in macOS Keychain, Windows Credential Manager, or a configured Linux Secret Service backend. There is no plaintext-file fallback.
 
 ## Connect a local STDIO server
