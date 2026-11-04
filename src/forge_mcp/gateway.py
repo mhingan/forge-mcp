@@ -34,7 +34,6 @@ def forge_mcp_list_servers() -> str:
             "transport": item.transport,
             "enabled": item.enabled,
             "source": item.source,
-            "url": item.url,
         }
         for item in store.load().values()
     ]
