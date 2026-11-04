@@ -32,6 +32,8 @@ class MCPToolBridge:
             if not connection.enabled:
                 continue
             for remote_tool in await self.connector.list_tools(connection):
+                if connection.allowed_tools and remote_tool["name"] not in connection.allowed_tools:
+                    continue
                 raw_name = f"mcp_{connection.name}_{remote_tool['name']}"
                 safe_name = re.sub(r"[^a-zA-Z0-9_-]", "_", raw_name)[:64]
                 if safe_name in self._lookup:
@@ -57,5 +59,12 @@ class MCPToolBridge:
         target = self._lookup.get(name)
         if target is None:
             raise ValueError("Unknown or no-longer-enabled MCP tool.")
-        connection, remote_tool = target
+        previous_connection, remote_tool = target
+        # Re-read permissions at call time so a disabled/removed connection or changed
+        # allowlist cannot be used through a stale model tool schema.
+        connection = self.store.load().get(previous_connection.name)
+        if connection is None or not connection.enabled:
+            raise ValueError("MCP connection was disabled or removed after tool discovery.")
+        if connection.allowed_tools and remote_tool not in connection.allowed_tools:
+            raise ValueError("MCP tool is no longer present in the connection allowlist.")
         return await self.connector.call_tool(connection, remote_tool, arguments)
