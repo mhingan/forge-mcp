@@ -9,6 +9,7 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 NAME_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$")
 CONFIG_VERSION = 1
@@ -37,10 +38,13 @@ class MCPConnection:
         url = value.get("url")
         if transport == "stdio" and (not isinstance(command, str) or not command.strip()):
             raise ValueError(f"{name}: stdio connections require a command.")
-        if transport == "http" and (
-            not isinstance(url, str) or not url.startswith("https://")
-        ):
-            raise ValueError(f"{name}: remote MCP connections must use HTTPS.")
+        if transport == "http":
+            parsed = urlsplit(url or "")
+            if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+                raise ValueError(f"{name}: remote MCP connections must use HTTPS without embedded credentials.")
+        enabled = value.get("enabled", False)
+        if not isinstance(enabled, bool):
+            raise ValueError(f"{name}: enabled must be a boolean.")
         args = value.get("args", [])
         if not isinstance(args, list) or not all(isinstance(x, str) for x in args):
             raise ValueError(f"{name}: args must be a list of strings.")
@@ -54,13 +58,19 @@ class MCPConnection:
             isinstance(k, str) and isinstance(v, str) for k, v in header_refs.items()
         ):
             raise ValueError(f"{name}: header_refs must map header names to keyring references.")
+        if any(not re.fullmatch(r"[A-Z_][A-Z0-9_]*", key) for key in env_refs):
+            raise ValueError(f"{name}: env_refs contains an invalid environment variable name.")
+        if any(not re.fullmatch(r"[A-Za-z0-9-]+", key) for key in header_refs):
+            raise ValueError(f"{name}: header_refs contains an invalid HTTP header name.")
+        if any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_./:-]{0,190}", ref) for ref in [*env_refs.values(), *header_refs.values()]):
+            raise ValueError(f"{name}: a credential reference contains unsupported characters.")
         allowed_tools = value.get("allowed_tools", [])
         if not isinstance(allowed_tools, list) or not all(isinstance(x, str) for x in allowed_tools):
             raise ValueError(f"{name}: allowed_tools must be a list of strings.")
         return cls(
             name=name,
             transport=transport,
-            enabled=bool(value.get("enabled", False)),
+            enabled=enabled,
             command=command,
             args=tuple(args),
             cwd=value.get("cwd"),
@@ -95,6 +105,8 @@ class ConnectionStore:
         self.path = path or (Path.home() / ".forge" / "mcp.json")
 
     def load(self) -> dict[str, MCPConnection]:
+        if self.path.parent.is_symlink():
+            raise ValueError(f"Refusing to read config through a symlinked directory: {self.path.parent}")
         if not self.path.exists():
             return {}
         if self.path.is_symlink():
@@ -108,6 +120,8 @@ class ConnectionStore:
         return {name: MCPConnection.from_dict(name, value) for name, value in entries.items()}
 
     def save(self, connections: dict[str, MCPConnection]) -> None:
+        if self.path.parent.is_symlink():
+            raise ValueError(f"Refusing to write config through a symlinked directory: {self.path.parent}")
         for name in connections:
             if not NAME_RE.fullmatch(name):
                 raise ValueError(f"Invalid MCP connection name: {name!r}")
