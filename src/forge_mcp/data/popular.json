@@ -1,0 +1,710 @@
+{
+  "schema_version": 1,
+  "title": "Top 100 MCP servers by GitHub stars",
+  "snapshot_date": "2026-11-03",
+  "source": "https://mcp.directory/servers/leaderboard",
+  "ranking_method": "GitHub stars as reported by MCP.Directory at the snapshot date",
+  "caveat": "GitHub stars measure repository attention, not safety, quality, install count, or search volume. Duplicate product names may refer to different publishers. Search the official MCP Registry and verify the publisher before installing.",
+  "servers": [
+    {
+      "rank": 1,
+      "name": "Markitdown",
+      "publisher": "microsoft",
+      "github_stars": 90388,
+      "registry_search": "Markitdown microsoft"
+    },
+    {
+      "rank": 2,
+      "name": "Firecrawl",
+      "publisher": "mendableai",
+      "github_stars": 89593,
+      "registry_search": "Firecrawl mendableai"
+    },
+    {
+      "rank": 3,
+      "name": "Sequential Thinking",
+      "publisher": "anthropic",
+      "github_stars": 80527,
+      "registry_search": "Sequential Thinking anthropic"
+    },
+    {
+      "rank": 4,
+      "name": "Knowledge Graph Memory",
+      "publisher": "anthropic",
+      "github_stars": 80527,
+      "registry_search": "Knowledge Graph Memory anthropic"
+    },
+    {
+      "rank": 5,
+      "name": "Filesystem",
+      "publisher": "anthropic",
+      "github_stars": 80527,
+      "registry_search": "Filesystem anthropic"
+    },
+    {
+      "rank": 6,
+      "name": "Browser Use",
+      "publisher": "browser-use",
+      "github_stars": 79942,
+      "registry_search": "Browser Use browser-use"
+    },
+    {
+      "rank": 7,
+      "name": "Context7",
+      "publisher": "upstash",
+      "github_stars": 48180,
+      "registry_search": "Context7 upstash"
+    },
+    {
+      "rank": 8,
+      "name": "Playwright Browser Automation",
+      "publisher": "microsoft",
+      "github_stars": 28449,
+      "registry_search": "Playwright Browser Automation microsoft"
+    },
+    {
+      "rank": 9,
+      "name": "Chrome DevTools MCP",
+      "publisher": "chromedevtools",
+      "github_stars": 28138,
+      "registry_search": "Chrome DevTools MCP chromedevtools"
+    },
+    {
+      "rank": 10,
+      "name": "Chrome DevTools",
+      "publisher": "chromedevtools",
+      "github_stars": 28133,
+      "registry_search": "Chrome DevTools chromedevtools"
+    },
+    {
+      "rank": 11,
+      "name": "GitHub",
+      "publisher": "github",
+      "github_stars": 27647,
+      "registry_search": "GitHub github"
+    },
+    {
+      "rank": 12,
+      "name": "Task Master",
+      "publisher": "eyaltoledano",
+      "github_stars": 25832,
+      "registry_search": "Task Master eyaltoledano"
+    },
+    {
+      "rank": 13,
+      "name": "Repomix",
+      "publisher": "yamadashy",
+      "github_stars": 22298,
+      "registry_search": "Repomix yamadashy"
+    },
+    {
+      "rank": 14,
+      "name": "Mastra Docs",
+      "publisher": "mastra-ai",
+      "github_stars": 21811,
+      "registry_search": "Mastra Docs mastra-ai"
+    },
+    {
+      "rank": 15,
+      "name": "Oh My Posh",
+      "publisher": "jandedobbeleer",
+      "github_stars": 21720,
+      "registry_search": "Oh My Posh jandedobbeleer"
+    },
+    {
+      "rank": 16,
+      "name": "Serena",
+      "publisher": "oraios",
+      "github_stars": 21163,
+      "registry_search": "Serena oraios"
+    },
+    {
+      "rank": 17,
+      "name": "Beads",
+      "publisher": "steveyegge",
+      "github_stars": 18556,
+      "registry_search": "Beads steveyegge"
+    },
+    {
+      "rank": 18,
+      "name": "Blender",
+      "publisher": "ahujasid",
+      "github_stars": 17597,
+      "registry_search": "Blender ahujasid"
+    },
+    {
+      "rank": 19,
+      "name": "n8n",
+      "publisher": "czlonkowski",
+      "github_stars": 14592,
+      "registry_search": "n8n czlonkowski"
+    },
+    {
+      "rank": 20,
+      "name": "Figma Context",
+      "publisher": "GLips",
+      "github_stars": 13490,
+      "registry_search": "Figma Context GLips"
+    },
+    {
+      "rank": 21,
+      "name": "Google GenAI Toolbox",
+      "publisher": "google",
+      "github_stars": 13327,
+      "registry_search": "Google GenAI Toolbox google"
+    },
+    {
+      "rank": 22,
+      "name": "PAL MCP Server",
+      "publisher": "BeehiveInnovations",
+      "github_stars": 11218,
+      "registry_search": "PAL MCP Server BeehiveInnovations"
+    },
+    {
+      "rank": 23,
+      "name": "Pipedream",
+      "publisher": "pipedreamhq",
+      "github_stars": 11137,
+      "registry_search": "Pipedream pipedreamhq"
+    },
+    {
+      "rank": 24,
+      "name": "Chrome MCP",
+      "publisher": "hangwin",
+      "github_stars": 10675,
+      "registry_search": "Chrome MCP hangwin"
+    },
+    {
+      "rank": 25,
+      "name": "Uno Platform",
+      "publisher": "unoplatform",
+      "github_stars": 9844,
+      "registry_search": "Uno Platform unoplatform"
+    },
+    {
+      "rank": 26,
+      "name": "MCP Use",
+      "publisher": "mcp-use",
+      "github_stars": 9396,
+      "registry_search": "MCP Use mcp-use"
+    },
+    {
+      "rank": 27,
+      "name": "Arize Phoenix",
+      "publisher": "arize-ai",
+      "github_stars": 8785,
+      "registry_search": "Arize Phoenix arize-ai"
+    },
+    {
+      "rank": 28,
+      "name": "AWS Documentation",
+      "publisher": "awslabs",
+      "github_stars": 8388,
+      "registry_search": "AWS Documentation awslabs"
+    },
+    {
+      "rank": 29,
+      "name": "GhidraMCP",
+      "publisher": "LaurieWired",
+      "github_stars": 7836,
+      "registry_search": "GhidraMCP LaurieWired"
+    },
+    {
+      "rank": 30,
+      "name": "GitMCP",
+      "publisher": "idosal",
+      "github_stars": 7723,
+      "registry_search": "GitMCP idosal"
+    },
+    {
+      "rank": 31,
+      "name": "HexStrike AI",
+      "publisher": "0x4m4",
+      "github_stars": 7298,
+      "registry_search": "HexStrike AI 0x4m4"
+    },
+    {
+      "rank": 32,
+      "name": "MCP Registry",
+      "publisher": "modelcontextprotocol",
+      "github_stars": 6531,
+      "registry_search": "MCP Registry modelcontextprotocol"
+    },
+    {
+      "rank": 33,
+      "name": "Browser",
+      "publisher": "browsermcp",
+      "github_stars": 5991,
+      "registry_search": "Browser browsermcp"
+    },
+    {
+      "rank": 34,
+      "name": "FireCrawl",
+      "publisher": "firecrawl",
+      "github_stars": 5694,
+      "registry_search": "FireCrawl firecrawl"
+    },
+    {
+      "rank": 35,
+      "name": "Desktop Commander MCP",
+      "publisher": "wonderwhy-er",
+      "github_stars": 5631,
+      "registry_search": "Desktop Commander MCP wonderwhy-er"
+    },
+    {
+      "rank": 36,
+      "name": "Desktop Commander",
+      "publisher": "wonderwhy-er",
+      "github_stars": 5630,
+      "registry_search": "Desktop Commander wonderwhy-er"
+    },
+    {
+      "rank": 37,
+      "name": "Genkit",
+      "publisher": "firebase",
+      "github_stars": 5598,
+      "registry_search": "Genkit firebase"
+    },
+    {
+      "rank": 38,
+      "name": "Claude Context",
+      "publisher": "zilliztech",
+      "github_stars": 5577,
+      "registry_search": "Claude Context zilliztech"
+    },
+    {
+      "rank": 39,
+      "name": "WhatsApp MCP",
+      "publisher": "lharries",
+      "github_stars": 5392,
+      "registry_search": "WhatsApp MCP lharries"
+    },
+    {
+      "rank": 40,
+      "name": "Playwright",
+      "publisher": "executeautomation",
+      "github_stars": 5291,
+      "registry_search": "Playwright executeautomation"
+    },
+    {
+      "rank": 41,
+      "name": "JsonDiffPatch",
+      "publisher": "benjamine",
+      "github_stars": 5287,
+      "registry_search": "JsonDiffPatch benjamine"
+    },
+    {
+      "rank": 42,
+      "name": "XcodeBuild",
+      "publisher": "cameroncooke",
+      "github_stars": 4635,
+      "registry_search": "XcodeBuild cameroncooke"
+    },
+    {
+      "rank": 43,
+      "name": "XcodeBuild MCP",
+      "publisher": "Sentry",
+      "github_stars": 4635,
+      "registry_search": "XcodeBuild MCP Sentry"
+    },
+    {
+      "rank": 44,
+      "name": "Windows MCP",
+      "publisher": "CursorTouch",
+      "github_stars": 4599,
+      "registry_search": "Windows MCP CursorTouch"
+    },
+    {
+      "rank": 45,
+      "name": "Atlassian Cloud",
+      "publisher": "sooperset",
+      "github_stars": 4526,
+      "registry_search": "Atlassian Cloud sooperset"
+    },
+    {
+      "rank": 46,
+      "name": "Deep Research MCP",
+      "publisher": "u14app",
+      "github_stars": 4501,
+      "registry_search": "Deep Research MCP u14app"
+    },
+    {
+      "rank": 47,
+      "name": "Magic",
+      "publisher": "21st-dev",
+      "github_stars": 4385,
+      "registry_search": "Magic 21st-dev"
+    },
+    {
+      "rank": 48,
+      "name": "Firebase",
+      "publisher": "firebase",
+      "github_stars": 4352,
+      "registry_search": "Firebase firebase"
+    },
+    {
+      "rank": 49,
+      "name": "MCPO",
+      "publisher": "Open WebUI",
+      "github_stars": 4034,
+      "registry_search": "MCPO Open WebUI"
+    },
+    {
+      "rank": 50,
+      "name": "Notion",
+      "publisher": "makenotion",
+      "github_stars": 4000,
+      "registry_search": "Notion makenotion"
+    },
+    {
+      "rank": 51,
+      "name": "Spec Workflow MCP",
+      "publisher": "Pimzino",
+      "github_stars": 3967,
+      "registry_search": "Spec Workflow MCP Pimzino"
+    },
+    {
+      "rank": 52,
+      "name": "Exa Search",
+      "publisher": "exa",
+      "github_stars": 3955,
+      "registry_search": "Exa Search exa"
+    },
+    {
+      "rank": 53,
+      "name": "MCP Server Chart",
+      "publisher": "antvis",
+      "github_stars": 3777,
+      "registry_search": "MCP Server Chart antvis"
+    },
+    {
+      "rank": 54,
+      "name": "Mobile Next",
+      "publisher": "mobile-next",
+      "github_stars": 3752,
+      "registry_search": "Mobile Next mobile-next"
+    },
+    {
+      "rank": 55,
+      "name": "MCP Feedback Enhanced",
+      "publisher": "Minidoracat",
+      "github_stars": 3597,
+      "registry_search": "MCP Feedback Enhanced Minidoracat"
+    },
+    {
+      "rank": 56,
+      "name": "Vizro",
+      "publisher": "mckinsey",
+      "github_stars": 3592,
+      "registry_search": "Vizro mckinsey"
+    },
+    {
+      "rank": 57,
+      "name": "Cipher",
+      "publisher": "campfirein",
+      "github_stars": 3559,
+      "registry_search": "Cipher campfirein"
+    },
+    {
+      "rank": 58,
+      "name": "Cloudflare Browser Rendering",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Browser Rendering cloudflare"
+    },
+    {
+      "rank": 59,
+      "name": "Cloudflare Workers Bindings",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Workers Bindings cloudflare"
+    },
+    {
+      "rank": 60,
+      "name": "Cloudflare Observability",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Observability cloudflare"
+    },
+    {
+      "rank": 61,
+      "name": "Cloudflare AI Gateway",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare AI Gateway cloudflare"
+    },
+    {
+      "rank": 62,
+      "name": "Cloudflare Workers Builds",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Workers Builds cloudflare"
+    },
+    {
+      "rank": 63,
+      "name": "Cloudflare Radar",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Radar cloudflare"
+    },
+    {
+      "rank": 64,
+      "name": "Cloudflare Documentation",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Documentation cloudflare"
+    },
+    {
+      "rank": 65,
+      "name": "Cloudflare Container Sandbox",
+      "publisher": "cloudflare",
+      "github_stars": 3519,
+      "registry_search": "Cloudflare Container Sandbox cloudflare"
+    },
+    {
+      "rank": 66,
+      "name": "Excel File Manipulation",
+      "publisher": "haris-musa",
+      "github_stars": 3432,
+      "registry_search": "Excel File Manipulation haris-musa"
+    },
+    {
+      "rank": 67,
+      "name": "Google Maps",
+      "publisher": "google",
+      "github_stars": 3352,
+      "registry_search": "Google Maps google"
+    },
+    {
+      "rank": 68,
+      "name": "Google BigQuery",
+      "publisher": "google",
+      "github_stars": 3352,
+      "registry_search": "Google BigQuery google"
+    },
+    {
+      "rank": 69,
+      "name": "Google Cloud Compute Engine",
+      "publisher": "google",
+      "github_stars": 3352,
+      "registry_search": "Google Cloud Compute Engine google"
+    },
+    {
+      "rank": 70,
+      "name": "Google Kubernetes Engine (GKE)",
+      "publisher": "google",
+      "github_stars": 3352,
+      "registry_search": "Google Kubernetes Engine (GKE) google"
+    },
+    {
+      "rank": 71,
+      "name": "Laravel Boost",
+      "publisher": "Laravel",
+      "github_stars": 3324,
+      "registry_search": "Laravel Boost Laravel"
+    },
+    {
+      "rank": 72,
+      "name": "Browserbase",
+      "publisher": "browserbase",
+      "github_stars": 3182,
+      "registry_search": "Browserbase browserbase"
+    },
+    {
+      "rank": 73,
+      "name": "Apple Native Tools",
+      "publisher": "supermemoryai",
+      "github_stars": 3025,
+      "registry_search": "Apple Native Tools supermemoryai"
+    },
+    {
+      "rank": 74,
+      "name": "Obsidian",
+      "publisher": "markuspfundstein",
+      "github_stars": 2972,
+      "registry_search": "Obsidian markuspfundstein"
+    },
+    {
+      "rank": 75,
+      "name": "Microsoft MCP Servers",
+      "publisher": "microsoft",
+      "github_stars": 2733,
+      "registry_search": "Microsoft MCP Servers microsoft"
+    },
+    {
+      "rank": 76,
+      "name": "shadcn/ui",
+      "publisher": "jpisnice",
+      "github_stars": 2682,
+      "registry_search": "shadcn/ui jpisnice"
+    },
+    {
+      "rank": 77,
+      "name": "Peekaboo (macOS Screen Capture)",
+      "publisher": "steipete",
+      "github_stars": 2630,
+      "registry_search": "Peekaboo (macOS Screen Capture) steipete"
+    },
+    {
+      "rank": 78,
+      "name": "Basic Memory",
+      "publisher": "basicmachines-co",
+      "github_stars": 2606,
+      "registry_search": "Basic Memory basicmachines-co"
+    },
+    {
+      "rank": 79,
+      "name": "Supabase MCP Server",
+      "publisher": "supabase-community",
+      "github_stars": 2516,
+      "registry_search": "Supabase MCP Server supabase-community"
+    },
+    {
+      "rank": 80,
+      "name": "Grafana",
+      "publisher": "grafana",
+      "github_stars": 2494,
+      "registry_search": "Grafana grafana"
+    },
+    {
+      "rank": 81,
+      "name": "Markdownify MCP",
+      "publisher": "zcaceres",
+      "github_stars": 2438,
+      "registry_search": "Markdownify MCP zcaceres"
+    },
+    {
+      "rank": 82,
+      "name": "arXiv MCP Server",
+      "publisher": "blazickjp",
+      "github_stars": 2294,
+      "registry_search": "arXiv MCP Server blazickjp"
+    },
+    {
+      "rank": 83,
+      "name": "Ableton Live",
+      "publisher": "ahujasid",
+      "github_stars": 2293,
+      "registry_search": "Ableton Live ahujasid"
+    },
+    {
+      "rank": 84,
+      "name": "Postgres MCP Pro",
+      "publisher": "crystaldba",
+      "github_stars": 2292,
+      "registry_search": "Postgres MCP Pro crystaldba"
+    },
+    {
+      "rank": 85,
+      "name": "DBHub (Universal Database Gateway)",
+      "publisher": "bytebase",
+      "github_stars": 2258,
+      "registry_search": "DBHub (Universal Database Gateway) bytebase"
+    },
+    {
+      "rank": 86,
+      "name": "Godot MCP",
+      "publisher": "Coding-Solo",
+      "github_stars": 2228,
+      "registry_search": "Godot MCP Coding-Solo"
+    },
+    {
+      "rank": 87,
+      "name": "Bright Data",
+      "publisher": "brightdata",
+      "github_stars": 2168,
+      "registry_search": "Bright Data brightdata"
+    },
+    {
+      "rank": 88,
+      "name": "Gemini CLI",
+      "publisher": "jamubc",
+      "github_stars": 2039,
+      "registry_search": "Gemini CLI jamubc"
+    },
+    {
+      "rank": 89,
+      "name": "DevDocs MCP",
+      "publisher": "CyberAGI",
+      "github_stars": 2037,
+      "registry_search": "DevDocs MCP CyberAGI"
+    },
+    {
+      "rank": 90,
+      "name": "Perplexity",
+      "publisher": "ppl-ai",
+      "github_stars": 1999,
+      "registry_search": "Perplexity ppl-ai"
+    },
+    {
+      "rank": 91,
+      "name": "Perplexity MCP",
+      "publisher": "Perplexity AI",
+      "github_stars": 1999,
+      "registry_search": "Perplexity MCP Perplexity AI"
+    },
+    {
+      "rank": 92,
+      "name": "OpenDia",
+      "publisher": "aaronjmars",
+      "github_stars": 1781,
+      "registry_search": "OpenDia aaronjmars"
+    },
+    {
+      "rank": 93,
+      "name": "Snyk Agent Scan",
+      "publisher": "Snyk",
+      "github_stars": 1779,
+      "registry_search": "Snyk Agent Scan Snyk"
+    },
+    {
+      "rank": 94,
+      "name": "Google Workspace MCP",
+      "publisher": "taylorwilsdon",
+      "github_stars": 1731,
+      "registry_search": "Google Workspace MCP taylorwilsdon"
+    },
+    {
+      "rank": 95,
+      "name": "iOS Simulator",
+      "publisher": "joshuayoes",
+      "github_stars": 1721,
+      "registry_search": "iOS Simulator joshuayoes"
+    },
+    {
+      "rank": 96,
+      "name": "Office Word",
+      "publisher": "gongrzhe",
+      "github_stars": 1693,
+      "registry_search": "Office Word gongrzhe"
+    },
+    {
+      "rank": 97,
+      "name": "Clerk",
+      "publisher": "clerk",
+      "github_stars": 1673,
+      "registry_search": "Clerk clerk"
+    },
+    {
+      "rank": 98,
+      "name": "Solana Agent Kit",
+      "publisher": "sendaifun",
+      "github_stars": 1622,
+      "registry_search": "Solana Agent Kit sendaifun"
+    },
+    {
+      "rank": 99,
+      "name": "pg-aiguide",
+      "publisher": "timescale",
+      "github_stars": 1590,
+      "registry_search": "pg-aiguide timescale"
+    },
+    {
+      "rank": 100,
+      "name": "n8n",
+      "publisher": "leonardsellem",
+      "github_stars": 1574,
+      "registry_search": "n8n leonardsellem"
+    }
+  ]
+}
