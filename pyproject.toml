@@ -3,7 +3,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "forge-mcp"
+name = "mihaita-forge-mcp"
 version = "0.2.0"
 description = "MCP server discovery, connection manifests, and integration registry for Forge Runtime"
 readme = "README.md"
