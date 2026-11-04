@@ -7,7 +7,7 @@ Forge MCP discovers MCP servers from the official Model Context Protocol Registr
 ## Install
 
 ```bash
-python -m pip install forge-mcp
+python -m pip install mihaita-forge-mcp
 ```
 
 ## Search the official registry
