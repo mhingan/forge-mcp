@@ -13,6 +13,9 @@ authors = [{ name = "Mihaita Hingan" }]
 keywords = ["mcp", "model-context-protocol", "ai-agents", "forge", "registry", "integrations"]
 dependencies = ["httpx>=0.27,<1"]
 
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.5"]
+
 [project.urls]
 Homepage = "https://github.com/mhingan/forge-mcp"
 Repository = "https://github.com/mhingan/forge-mcp"
