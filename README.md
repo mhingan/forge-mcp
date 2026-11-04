@@ -21,7 +21,7 @@ The official registry is the live source for server metadata, versions, and tran
 
 ## Connect a remote OAuth MCP
 
-    forge-mcp add-http figma https://mcp.figma.com/mcp --auth-mode oauth
+    forge-mcp add-http figma https://mcp.figma.com/mcp --auth-mode oauth --allow-tool get_file --allow-tool list_files
     forge-mcp enable figma
     forge-mcp tools figma
 
