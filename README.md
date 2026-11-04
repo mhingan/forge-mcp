@@ -14,7 +14,8 @@ python -m pip install forge-mcp
 
 ```bash
 forge-mcp search figma
-forge-mcp list --featured
+forge-mcp browse --limit 100
+forge-mcp list
 ```
 
 ## Configuration
