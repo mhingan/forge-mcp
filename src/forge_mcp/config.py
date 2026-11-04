@@ -35,7 +35,7 @@ class MCPConnection:
     source: str = "custom"
 
     @classmethod
-    def from_dict(cls, name: str, value: dict[str, Any]) -> "MCPConnection":
+    def from_dict(cls, name: str, value: dict[str, Any]) -> MCPConnection:
         transport = value.get("transport")
         if transport not in {"stdio", "http"}:
             raise ValueError(f"{name}: transport must be 'stdio' or 'http'.")
@@ -49,7 +49,7 @@ class MCPConnection:
                 raise ValueError(f"{name}: remote MCP connections must use HTTPS without embedded credentials.")
         enabled = value.get("enabled", False)
         if not isinstance(enabled, bool):
-            raise ValueError(f"{name}: enabled must be a boolean.")
+            raise TypeError(f"{name}: enabled must be a boolean.")
         args = value.get("args", [])
         if not isinstance(args, list) or not all(isinstance(x, str) for x in args):
             raise ValueError(f"{name}: args must be a list of strings.")
@@ -123,7 +123,7 @@ class ConnectionStore:
             raise ValueError("Unsupported or malformed Forge MCP config.")
         entries = payload.get("servers", {})
         if not isinstance(entries, dict):
-            raise ValueError("Forge MCP config 'servers' must be an object.")
+            raise TypeError("Forge MCP config 'servers' must be an object.")
         return {name: MCPConnection.from_dict(name, value) for name, value in entries.items()}
 
     def save(self, connections: dict[str, MCPConnection]) -> None:
