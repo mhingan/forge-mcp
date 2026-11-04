@@ -15,8 +15,15 @@ python -m pip install forge-mcp
 ```bash
 forge-mcp search figma
 forge-mcp browse --limit 100
+forge-mcp popular --limit 100
 forge-mcp list
 ```
+
+## Popular discovery catalogue
+
+`forge-mcp popular` displays a bundled snapshot of the top 100 MCP servers ranked by GitHub stars, using MCP.Directory's leaderboard snapshot dated 2026-11-03. Stars are a signal of developer attention, not a safety or quality score and not the same as search volume. Each item is a discovery suggestion only: resolve the candidate through the official MCP Registry, check the publisher and package metadata, and enable it only after review. The official registry remains the source of truth for installable server versions and transports.
+
+The catalogue is versioned with the package and can be refreshed in a later release. All other registry entries remain searchable with `forge-mcp search`.
 
 ## Configuration
 
