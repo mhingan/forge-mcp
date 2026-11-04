@@ -45,7 +45,7 @@ def test_remote_url_cannot_embed_credentials():
 
 
 def test_enabled_must_be_a_boolean():
-    with pytest.raises(ValueError, match="enabled must be a boolean"):
+    with pytest.raises(TypeError, match="enabled must be a boolean"):
         MCPConnection.from_dict(
             "unsafe",
             {"transport": "stdio", "command": "npx", "enabled": "false"},
