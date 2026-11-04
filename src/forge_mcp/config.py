@@ -52,7 +52,10 @@ class MCPConnection:
         auth_mode = value.get("auth_mode", "bearer" if value.get("header_refs") else "none")
         if auth_mode not in {"none", "bearer", "oauth"}:
             raise ValueError(f"{name}: auth_mode must be none, bearer, or oauth.")
-        if auth_mode == "none" and value.get("header_refs"):
+        if auth_mode == "none" and any(
+            str(header).lower() == "authorization"
+            for header in (value.get("header_refs") or {})
+        ):
             auth_mode = "bearer"
         oauth_scope = value.get("oauth_scope")
         if oauth_scope is not None and not isinstance(oauth_scope, str):
