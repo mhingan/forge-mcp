@@ -18,7 +18,7 @@ def popular_servers(limit: int = 100) -> list[dict[str, Any]]:
     payload = json.loads(source.read_text(encoding="utf-8"))
     entries = payload.get("servers")
     if not isinstance(entries, list):
-        raise ValueError("Bundled MCP popularity catalogue is malformed.")
+        raise TypeError("Bundled MCP popularity catalogue is malformed.")
     return entries[:limit]
 
 
