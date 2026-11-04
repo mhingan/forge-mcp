@@ -35,9 +35,6 @@ class ServerRecord:
             repository_url = repository
         else:
             repository_url = None
-        official_meta = (item.get("_meta") or {}).get(
-            "io.modelcontextprotocol.registry/official", {}
-        )
         return cls(
             name=str(server.get("name") or ""),
             description=str(server.get("description") or ""),
