@@ -85,7 +85,12 @@ async def forge_mcp_call_tool(
     try:
         return await connector.call_tool(connection, tool_name, arguments)
     except Exception as exc:
-        return json.dumps({"error": f"{type(exc).__name__}: {exc}"})
+        return json.dumps(
+            {
+                "error": "MCP tool call failed.",
+                "error_type": type(exc).__name__,
+            }
+        )
 
 
 def run() -> None:
