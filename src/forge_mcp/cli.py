@@ -41,7 +41,7 @@ def build_parser() -> argparse.ArgumentParser:
     add.add_argument("--enable", action="store_true")
     stdio = sub.add_parser("add-stdio", help="Add a local STDIO MCP server (disabled by default)")
     stdio.add_argument("name")
-    stdio.add_argument("command")
+    stdio.add_argument("executable")
     stdio.add_argument("args", nargs="*")
     stdio.add_argument("--enable", action="store_true")
     remove = sub.add_parser("remove", help="Remove a local connection")
@@ -77,7 +77,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Added {args.name}. Review it, add credential references, then enable it.")
         elif args.command == "add-stdio":
             store.add(MCPConnection(name=args.name, transport="stdio", enabled=args.enable,
-                                    command=args.command, args=tuple(args.args)))
+                                    command=args.executable, args=tuple(args.args)))
             print(f"Added {args.name}. Local commands execute on this computer when enabled.")
         elif args.command == "remove":
             store.remove(args.name)
