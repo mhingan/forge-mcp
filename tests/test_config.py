@@ -100,3 +100,16 @@ def test_oauth_is_not_valid_for_stdio():
             "local",
             {"transport": "stdio", "command": "npx", "auth_mode": "oauth"},
         )
+
+
+def test_http_custom_header_reference_does_not_force_bearer_auth():
+    connection = MCPConnection.from_dict(
+        "remote",
+        {
+            "transport": "http",
+            "url": "https://example.com/mcp",
+            "header_refs": {"X-API-Key": "forge/remote/key"},
+        },
+    )
+    assert connection.auth_mode == "none"
+    assert connection.header_refs == {"X-API-Key": "forge/remote/key"}
